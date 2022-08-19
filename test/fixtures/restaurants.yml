@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant_name: MyString
+  restaurant_contactNo: 1
+  restaurant_status: MyString
+  restaurant_timings: 2022-08-18 10:00:11
+
+two:
+  restaurant_name: MyString
+  restaurant_contactNo: 1
+  restaurant_status: MyString
+  restaurant_timings: 2022-08-18 10:00:11
