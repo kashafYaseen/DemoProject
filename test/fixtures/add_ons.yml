@@ -1,9 +1,0 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  addOn_name: MyString
-  addOn_price: 1
-
-two:
-  addOn_name: MyString
-  addOn_price: 1

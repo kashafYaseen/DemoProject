@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'menu/index'
-  get 'orders/index'
-  resources :employees
-  resources :customers
-  resources :restaurants
-  root 'restaurants#index'
-  #root 'pages#index'
+  devise_for :users
+  #get 'menu/index'
+  #get 'orders/index'
+  #root 'restaurants#index'
+  root 'pages#index'
   get 'pages/login'
   get 'pages/register'
   get 'pages/password'

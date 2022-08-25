@@ -1,9 +1,0 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  order_id: 1
-  order_descr: MyText
-
-two:
-  order_id: 1
-  order_descr: MyText
