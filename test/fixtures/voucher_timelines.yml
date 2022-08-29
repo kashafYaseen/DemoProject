@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2022-08-29 10:14:36
+  end_time: 2022-08-29 10:14:36
+  status: MyString
+  voucher: one
+
+two:
+  start_time: 2022-08-29 10:14:36
+  end_time: 2022-08-29 10:14:36
+  status: MyString
+  voucher: two

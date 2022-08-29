@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  opening_time: 2022-08-26 14:56:42
+  closing_time: 2022-08-26 14:56:42
+  week_day: one
+  restaurant: one
+
+two:
+  opening_time: 2022-08-26 14:56:42
+  closing_time: 2022-08-26 14:56:42
+  week_day: two
+  restaurant: two

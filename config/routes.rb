@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :employees
+  devise_for :customers
+  get 'employee/index'
+  get 'customer/index'
+
   #get 'menu/index'
   #get 'orders/index'
   #root 'restaurants#index'
