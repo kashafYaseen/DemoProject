@@ -1,3 +1,3 @@
 class Rating < ApplicationRecord
-    has_one :rating, :dependent => :destroy
+  has_one :rating, :dependent => :destroy
 end
