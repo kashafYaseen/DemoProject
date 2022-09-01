@@ -4,4 +4,8 @@ class OrderItem < ApplicationRecord
   has_many :ordered_addons, :dependent => :destroy
   has_many :ordered_options, :dependent => :destroy
   has_many :order_histories
+
+  def name 
+    "#{OrderItemable_type}"
+  end
 end

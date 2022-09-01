@@ -28,6 +28,13 @@ gem 'devise-bootstrap-views', '~> 1.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#Use Active Admin for Super Admin 
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+gem 'ransack'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -8,4 +8,5 @@ class Order < ApplicationRecord
   belongs_to :rating
   validates :rating_id, uniqueness: true
   has_many :order_items, :dependent => :destroy
+
 end

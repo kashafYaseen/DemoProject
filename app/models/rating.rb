@@ -1,3 +1,7 @@
 class Rating < ApplicationRecord
-    has_one :rating, :dependent => :destroy
+  has_one :rating, :dependent => :destroy
+
+  def name 
+    "#{rating_desc}"
+  end
 end
