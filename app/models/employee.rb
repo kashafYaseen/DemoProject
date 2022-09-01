@@ -8,5 +8,8 @@ class Employee < ApplicationRecord
                           foreign_key: "manager_id"
 
   belongs_to :manager, class_name: "Employee", optional: true
-  
+  enum position: {
+    Staff: 0,
+    Manager: 1
+  }
 end

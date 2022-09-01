@@ -3,7 +3,7 @@ class CreateMenuTimings < ActiveRecord::Migration[6.1]
     create_table :menu_timings do |t|
       t.datetime :start_time
       t.datetime :end_time
-      t.references :week_day, null: false, foreign_key: true
+      t.integer :week_day, default:0
       t.references :menu, null: false, foreign_key: true
 
       t.timestamps
