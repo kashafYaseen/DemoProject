@@ -8,7 +8,6 @@ ActiveAdmin.register Restaurant do
     column :contact
     column :status
     column "Manager" do |m|
-      
       if Employee.where(id: m.employee_ids).first.nil?
         Employee.where(id: m.employee_ids).first
       else
@@ -31,5 +30,5 @@ ActiveAdmin.register Restaurant do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end

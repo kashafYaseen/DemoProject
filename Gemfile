@@ -30,6 +30,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 #Use Active Admin for Super Admin 
 gem 'activeadmin'
+gem 'devise_invitable', '~> 2.0.0'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'

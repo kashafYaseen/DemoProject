@@ -1,5 +1,6 @@
 ActiveAdmin.register Customer do
   config.remove_action_item(:new)
+  menu priority: 4
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -12,12 +13,35 @@ ActiveAdmin.register Customer do
     column :email
     column :contact
     column :address
-    column :order_id
     actions
   end
+  show do
+    attributes_table do
+      row :first_name
+      row :last_name
+      row :email
+      row :address
+      row :contact
+    end
+  end
 
-  
-  #filter :orders
+  form do |f|
+    inputs "Customer Details" do
+      input :first_name
+      input :last_name
+      input :email
+      input :address
+      input :contact
+      actions
+    end
+  end
+
+  filter :orders
+  filter :first_name
+  filter :last_name
+  filter :contact
+  filter :email
+  filter :address
   # or
   #
   # permit_params do
@@ -25,5 +49,5 @@ ActiveAdmin.register Customer do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end

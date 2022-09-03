@@ -1,5 +1,6 @@
 ActiveAdmin.register Order do
   config.remove_action_item(:new)
+  menu priority: 5
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,10 +15,13 @@ ActiveAdmin.register Order do
     column :rating
     column :payment
     column :voucher
-    column :address
-    column :order_id
     actions
   end
+  filter :customer
+  filter :voucher
+  filter :restaurant
+  filter :order_status
+  filter :order_descr
   # or
   #
   # permit_params do
@@ -25,5 +29,5 @@ ActiveAdmin.register Order do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end

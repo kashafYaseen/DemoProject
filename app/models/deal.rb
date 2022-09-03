@@ -4,7 +4,7 @@ class Deal < ApplicationRecord
   has_many :order_histories
   has_many :deal_items, :dependent => :destroy
 
-  def name 
+  def name
     "#{deal_name}"
   end
 end

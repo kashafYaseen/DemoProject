@@ -1,5 +1,6 @@
 ActiveAdmin.register Menu do
   config.remove_action_item(:new)
+  menu priority: 3
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -13,6 +14,9 @@ ActiveAdmin.register Menu do
     column :menu_timings
     actions
   end
+  filter :restaurant
+  filter :menu_timings
+  filter :menu_name
   # or
   #
   # permit_params do

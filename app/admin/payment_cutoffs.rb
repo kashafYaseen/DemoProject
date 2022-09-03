@@ -1,22 +1,20 @@
 ActiveAdmin.register PaymentCutoff do
-
+  menu priority: 6
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
-  
   permit_params :admin_percent, :restaurant_percent, :payment_id
   index do
     selectable_column
     column "Admin Percentage", :admin_percent
     column "Restaurant Percentage", :restaurant_percent
-    column "Payment Type", :payment
-    #column "Restaurant", :restaurant
-    # column "Order No." do |m|
-    #   usr = Payment.find(m.order_id)
-    # end
+    column "Restaurant", :restaurant
     actions
   end
+  filter :restaurant
+  filter :admin_percent
+  filter :restaurant_percent
   #
   # or
   #
@@ -25,5 +23,4 @@ ActiveAdmin.register PaymentCutoff do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end
