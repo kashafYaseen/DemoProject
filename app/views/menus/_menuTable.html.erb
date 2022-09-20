@@ -1,0 +1,49 @@
+<div class="container-fluid px-4">
+            <h1 class="mt-4">Restaurant Menus</h1>
+            <div class="card mb-4">
+            </div>
+            <div class="card mb-4">
+              <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Menus
+                <%= button_to "Add New Menu", menus_new_path, :method => :get, class:"rightButton" %>
+              </div>
+              <div class="card-body">
+                <table id="datatablesSimple">
+                  <thead>
+                    <tr>
+                      <th>Menu ID</th>
+                      <th>Menu Name</th>
+                      <th>Menu Day</th>
+                      <th>Timings</th>
+                      <th>Menu Category</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @menu.each do |menu| %>
+                      <tr>
+                        <td class="counterCell"></td>
+                        <td><%= menu.menu_name%></td>
+                        <td>
+                          <% menu.menu_timings.each do |day|%>
+                            <%= day.week_day%>,
+                          <% end %>
+                        </td>
+                        <td>
+                          <% menu.menu_timings.each do |day|%>
+                            <%= day.start_time%>-<%= day.end_time%>,
+                          <% end %>
+                        </td>
+                        <td>
+                            <%= link_to "Food Item", menus_menuItem_path(menu_id: menu.id), :class => "nav-link"  %>
+                            <%= link_to "Deal", menus_menuDeal_path(menu_id: menu.id), :class => "nav-link"  %>
+                        </td>
+                        <td><%= button_to "Update", :method => :update %></td>
+                        <td><%= button_to "Delete", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+</div>

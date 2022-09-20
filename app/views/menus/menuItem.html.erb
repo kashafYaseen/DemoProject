@@ -1,0 +1,55 @@
+<% if current_employee%>
+  <%= render 'employee/navigation' %>
+  <div class="sb-nav-fixed">
+        <div id="layoutSidenav">
+          <%= render 'employee/sidenav' %>
+          <div id="layoutSidenav_content">
+            <main>
+              <%= render 'employee/card'%>
+              <div class="container-fluid px-4">
+                <div class="container-fluid px-4">
+                  <h1 class="mt-4">Menu Food Items</h1>
+                  <div class="card mb-4">
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <i class="fas fa-table me-1"></i>
+                      Food Items
+                      <%= button_to "Add New Item", deals_new_path, :method => :get, class:"rightButton" %>
+                    </div>
+                    <div class="card-body">
+                      <table id="datatablesSimple">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Group</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% @menu.menu_items.each do |menu_items| %>
+                              <% if menu_items.MenuItemable_type == "GroupItem" %>
+                                <% menu_items.MenuItemable.food_items.each do |d| %>
+                                  <tr>
+                                    <td class="counterCell"></td>
+                                    <td><%= d.item_name %></td>
+                                    <td><%= d.item_price %></td>
+                                    <td><%= menu_items.MenuItemable.groupItem_name %></td>
+                                    <td><%= button_to "Remove", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                                  </tr>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+  </div>
+<% end %>

@@ -1,19 +1,39 @@
 Rails.application.routes.draw do
+  # resources :brands, only: [:index, :show] do
+  #   resources :products, only: [:index, :show]
+  # end
+
+
+  get 'orders/list'
+  root 'menus#item'
   devise_for :employees
   devise_for :customers
   get 'employee/index'
   get 'customer/index'
 
-  #get 'menu/index'
-  #get 'orders/index'
-  #root 'restaurants#index'
-  root 'pages#index'
-  get 'pages/login'
-  get 'pages/register'
-  get 'pages/password'
-  get 'pages/layout-static'
-  get 'pages/layout-sidenav-light'
-  get 'pages/tables'
-  get 'pages/charts'
+  resources :menus, only: [:index, :new, :create, :edit, :update, :destroy]
+  get 'menus/new'
+  get 'menus/edit'
+  get 'menus/index'
+  get 'menus/menuDeal'
+  get 'menus/menuItem'
+  resources :food_items, only: [:index, :new, :create, :edit, :update, :destroy]
+  get 'food_items/index'
+  get 'food_items/new'
+  get 'food_items/edit'
+  resources :discounts, only: [:index, :new, :create, :edit, :update, :destroy]
+  get 'discounts/index'
+  get 'discounts/new'
+  get 'discounts/edit'
+  resources :vouchers, only: [:index, :new, :create, :edit, :update, :destroy]
+  get 'vouchers/index'
+  get 'vouchers/new'
+  get 'vouchers/edit'
+  resources :deals, only: [:index, :new, :create, :edit, :update, :destroy]
+  get 'deals/index'
+  get 'deals/new'
+  get 'deals/edit'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

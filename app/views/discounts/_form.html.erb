@@ -1,0 +1,36 @@
+
+<% if current_employee%>
+  <%= render 'employee/navigation' %>
+  <div class="sb-nav-fixed">
+        <div id="layoutSidenav">
+          <%= render 'employee/sidenav' %>
+          <div id="layoutSidenav_content">
+            <main>
+              <%= render 'employee/card'%>
+              <div class="container-fluid px-4">
+                <div class="container">
+                  <h1>Restaurant Discount </h1>
+                  <%= form_with model: @disc, local: true do |f| %>
+                    <div class="row">
+                      <div class="form-group">
+                        <%= f.label :disc_percent %>
+                        <%= f.text_field :disc_percent, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :disc_type %>
+                        <%= f.text_field :disc_type, class: "form-control" %>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <%= f.submit %>
+                      <%= link_to "cancel", :back, class: "btn-primary", class:"rightButton" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+  </div>
+<% end %>
