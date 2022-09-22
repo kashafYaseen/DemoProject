@@ -9,6 +9,7 @@ class Order < ApplicationRecord
     TakenOver: 6,
     Cancelled: 7
   }
+
   belongs_to :customer
   belongs_to :voucher
   belongs_to :payment
@@ -17,4 +18,16 @@ class Order < ApplicationRecord
   belongs_to :review
   validates :review_id, uniqueness: true
   has_many :order_items, :dependent => :destroy
+
+  def customer_name
+    "#{customer.first_name} #{customer.last_name}"
+  end
+
+  def customer_address
+    customer.address
+  end
+
+  def order_payment
+    payment.total_payment
+  end
 end

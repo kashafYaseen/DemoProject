@@ -1,0 +1,47 @@
+<h1>Create New Menu</h1>
+<%= form_with model: @menu, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :menu_name %>
+    <%= f.text_field :menu_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.fields_for :menu_timings do |m| %>
+      <%= m.label :timing %><br/>
+      <div class="row">
+        <div class="col">
+          <%= m.label :start_time %>
+          <%= m.datetime_field :start_time, class: "form-control" %>
+        </div>
+
+        <div class="col">
+          <%= m.label :end_time %>
+          <%= m.datetime_field :end_time, class: "form-control" %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-group", id="menuType">
+    <%= f.fields_for :menu_items do |menu_item| %>
+      <%= menu_item.label :menu_type %><br/>
+      <%= menu_item.select :MenuItemable_type, options_for_select([["Group Item", "GroupItem"], ["Deal", "Deal"]]), {include_blank: true}, class: "form-select", id: 'menuType' %>
+
+      <%= link_to "Your button","#", id: "formButton" %>
+      <div id="myForm">
+        <%= render 'addGroup', f: f %>
+      </div>
+
+      <div class="dis-none deal form-group">
+        <%= f.label :menu_name %>
+        <%= f.text_field :menu_name, class: "form-control" %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+<% end %>

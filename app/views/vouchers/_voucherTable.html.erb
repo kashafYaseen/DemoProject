@@ -1,54 +1,37 @@
 <div class="container-fluid px-4">
-            <h1 class="mt-4">Restaurant Vouchers</h1>
-            <div class="card mb-4">
-            </div>
-            <div class="card mb-4">
-              <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                Vouchers
-                <%= button_to "Add New Voucher", vouchers_new_path, :method => :get, class:"rightButton" %>
-              </div>
-              <div class="card-body">
-                <table id="datatablesSimple">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Promo Code</th>
-                      <th>Status</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>Discount</th>
-                      <th>Discount Type</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @voucher.each do |voucher| %>
-                        <% current_employee.restaurant.discounts.each do |d| %>
-                          <% if d.id == voucher.discount_id %>
-                            <tr>
-                                  <td class="counterCell"></td>
-                                  <td><%= voucher.promo_code %></td>
-                                  <td><%= voucher.status %></td>
-                                  <td>
-                                  <% voucher.voucher_timelines.each do |vt| %>
-                                    <%= vt.start_time %>,
-                                  <% end %>
-                                  </td>
-                                  <td>
-                                  <% voucher.voucher_timelines.each do |vt| %>
-                                    <%= vt.end_time %>,
-                                  <% end %>
-                                  </td>
-                                  <td><%= d.disc_percent%>%</td>
-                                  <td><%= d.disc_type%></td>
-                                  <td><%= button_to "Update", edit_voucher_path(voucher), :method => :get %></td>
-                            </tr>
-                          <% end %>
-                        <% end %>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+  <h1 class="mt-4">Restaurant Vouchers</h1>
+    <div class="card mb-4">
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Vouchers
+        <%= button_to "Add New Voucher", vouchers_new_path, :method => :get, class:"rightButton" %>
+      </div>
+
+      <div class="card-body">
+        <table id="datatablesSimple">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Promo Code</th>
+              <th>Status</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Discount</th>
+              <th>Discount Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <%= render 'tableForm' %>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
 </div>

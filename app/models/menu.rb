@@ -4,4 +4,9 @@ class Menu < ApplicationRecord
   has_many :menu_items, :dependent => :destroy
   accepts_nested_attributes_for :menu_timings, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :menu_items, allow_destroy: true, reject_if: :all_blank
+
+  def rest_name
+    restaurant.name
+  end
+
 end

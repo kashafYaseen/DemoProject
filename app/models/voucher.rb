@@ -8,4 +8,9 @@ class Voucher < ApplicationRecord
   validates_associated :voucher_timelines
   belongs_to :discount
   has_many :orders
+
+  delegate :restaurant, to: :discount
+  delegate :disc_percent, to: :discount
+  delegate :disc_type, to: :discount
+
 end

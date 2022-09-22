@@ -9,4 +9,10 @@ class MenuTiming < ApplicationRecord
     Sunday: 6
   }
   belongs_to :menu
+
+  delegate :restaurant, to: :menu
+
+  def rest_name
+    restaurant.name
+  end
 end

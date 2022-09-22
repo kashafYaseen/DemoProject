@@ -1,54 +1,18 @@
-
 <% if current_employee%>
   <%= render 'employee/navigation' %>
   <div class="sb-nav-fixed">
-        <div id="layoutSidenav">
-          <%= render 'employee/sidenav' %>
-          <div id="layoutSidenav_content">
-            <main>
-              <%= render 'employee/card'%>
-              <div class="container-fluid px-4">
-                <div class="container">
-                  <h1>Edit Voucher </h1>
-                  <%= form_with model: @voucher, local: true do |f| %>
-                    <div class="row">
-                      <div class="form-group col-6">
-                        <%= f.label :promo_code %>
-                        <%= f.text_field :promo_code, class: "form-control" %>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <%= f.fields_for :voucher_timelines do |v| %>
-                        <div class="form-group col-6">
-                          <%= v.label :start_time %>
-                          <%= v.datetime_field :start_time, class: "form-control" %>
-                        </div>
-                        <div class="form-group col-6">
-                          <%= v.label :end_time %>
-                          <%= v.datetime_field :end_time, class: "form-control" %>
-                        </div>
-                        <div class="form-group col-6">
-                          <%= f.label :status %>
-                          <%= f.text_field :status, class: "form-control", :disabled => true %>
-                          <%= f.select :status, options_for_select(Voucher::statuses.map{ |value, index| "#{value}" }), {include_blank: true}, class: "form-select" %>
-                        </div>
-                        <div class="form-group col-6">
-                          <%= f.label :discount %>
-                          <%= f.select :discount_id, current_employee.restaurant.discounts.to_a.map { |t| ["#{t.disc_percent}%  #{t.disc_type}", t.id] }, {include_blank: true}, class: "form-select" %>
-                        </div>
-                      <% end %>
-
-                    </div>
-                    <br>
-                    <div class="form-group">
-                      <%= f.submit %>
-                      <%= link_to "cancel", :back, class: "btn-primary", class:"rightButton" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </main>
+    <div id="layoutSidenav">
+      <%= render 'employee/sidenav' %>
+      <div id="layoutSidenav_content">
+        <main>
+          <%= render 'employee/card'%>
+          <div class="container-fluid px-4">
+            <div class="container">
+              <%= render 'editForm'%>
+            </div>
           </div>
-        </div>
+        </main>
+      </div>
+    </div>
   </div>
 <% end %>

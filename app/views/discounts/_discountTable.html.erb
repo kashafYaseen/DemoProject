@@ -1,36 +1,40 @@
 <div class="container-fluid px-4">
-            <h1 class="mt-4">Restaurant Discounts</h1>
-            <div class="card mb-4">
-            </div>
-            <div class="card mb-4">
-              <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                Discounts
-                <%= button_to "Add New Discount", discounts_new_path, :method => :get, class:"rightButton" %>
-              </div>
-              <div class="card-body">
-                <table id="datatablesSimple">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Percentage</th>
-                      <th>Type</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @disc.each do |ds| %>
-                      <tr>
-                        <td class="counterCell"></td>
-                        <td><%= ds.disc_percent %>%</td>
-                        <td><%= ds.disc_type %></td>
-                        <td><%= ds.created_at %></td>
-                        <td><%= button_to "Update", edit_discount_path(ds), :method => :get %></td>
-                        <td><%= button_to "Delete", discount_path(ds), :method => :delete %></td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+  <h1 class="mt-4">Restaurant Discounts</h1>
+  <div class="card mb-4">
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      Discounts
+      <%= button_to "Add New Discount", discounts_new_path, :method => :get, class:"rightButton" %>
+    </div>
+
+    <div class="card-body">
+      <table id="datatablesSimple">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Percentage</th>
+            <th>Type</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @disc.each do |ds| %>
+            <tr>
+              <td class="counterCell"></td>
+              <td><%= ds.disc_percent %>%</td>
+              <td><%= ds.disc_type %></td>
+              <td><%= ds.created_at %></td>
+              <td><%= button_to "Update", edit_discount_path(ds), :method => :get %></td>
+              <td><%= button_to "Delete", discount_path(ds), :method => :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 </div>

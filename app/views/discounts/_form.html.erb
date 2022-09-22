@@ -18,7 +18,8 @@
                       </div>
                       <div class="form-group">
                         <%= f.label :disc_type %>
-                        <%= f.text_field :disc_type, class: "form-control" %>
+                          <%= f.text_field :disc_type, class: "form-control", :disabled => true %>
+                          <%= f.select :disc_type, options_for_select(Discount::disc_types.map{ |value, index| "#{value}" }), {include_blank: true}, class: "form-select" %>
                       </div>
                     </div>
                     <br>

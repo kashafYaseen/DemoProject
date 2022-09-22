@@ -34,6 +34,5 @@ Rails.application.routes.draw do
   get 'deals/new'
   get 'deals/edit'
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

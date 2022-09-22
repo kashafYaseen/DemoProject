@@ -1,40 +1,44 @@
 <div class="container-fluid px-4">
-            <h1 class="mt-4">Restaurant Deals</h1>
-            <div class="card mb-4">
-            </div>
-            <div class="card mb-4">
-              <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                Deals
-                <%= button_to "Add New Deal", deals_new_path, :method => :get, class:"rightButton" %>
-              </div>
-              <div class="card-body">
-                <table id="datatablesSimple">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @menu.each do |menu| %>
-                      <% menu.menu_items.each do |menu_items| %>
-                          <% if menu_items.MenuItemable_type == "Deal" %>
-                            <tr>
-                              <td class="counterCell"></td>
-                              <td><%= menu_items.MenuItemable.deal_name %></td>
-                              <td><%= menu_items.MenuItemable.deal_description %></td>
-                              <td><%= menu_items.MenuItemable.deal_price %></td>
-                              <td><%= button_to "Update", :method => :update %></td>
-                              <td><%= button_to "Delete", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
-                            </tr>
-                          <% end %>
-                      <% end %>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+  <h1 class="mt-4">Restaurant Deals</h1>
+  <div class="card mb-4">
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      Deals
+      <%= button_to "Add New Deal", deals_new_path, :method => :get, class:"rightButton" %>
+    </div>
+
+    <div class="card-body">
+      <table id="datatablesSimple">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @menu.each do |menu| %>
+            <% menu.menu_items.each do |menu_items| %>
+              <% if menu_items.MenuItemable_type == "Deal" %>
+                <tr>
+                  <td class="counterCell"></td>
+                  <td><%= menu_items.MenuItemable.deal_name %></td>
+                  <td><%= menu_items.MenuItemable.deal_description %></td>
+                  <td><%= menu_items.MenuItemable.deal_price %></td>
+                  <td><%= button_to "Update", :method => :update %></td>
+                  <td><%= button_to "Delete", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>

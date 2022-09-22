@@ -1,49 +1,37 @@
-<% if current_employee%>
-  <%= render 'employee/navigation' %>
-  <div class="sb-nav-fixed">
-        <div id="layoutSidenav">
-          <%= render 'employee/sidenav' %>
-          <div id="layoutSidenav_content">
-            <main>
-              <%= render 'employee/card'%>
-              <div class="container-fluid px-4">
-                <div class="container">
-                  <h1>Add New Deal </h1>
-                  <%= form_with model: @deal, local: true do |f| %>
-                    <div class="row">
-                      <div class="form-group col-6">
-                        <%= f.label :deal_name %>
-                        <%= f.text_field :deal_name, class: "form-control" %>
-                      </div>
-                      <div class="form-group col-6">
-                        <%= f.label :deal_price %>
-                        <%= f.text_field :deal_price, class: "form-control" %>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group">
-                        <%= f.label :deal_description %>
-                        <%= f.text_field :deal_description, class: "form-control" %>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <%= f.fields_for :menu_items do |m| %>
-                        <div class="form-group">
-                          <%= m.label :menu %>
-                          <%= m.select :menu_id, current_employee.restaurant.menus.to_a.map { |t| ["#{t.menu_name}", t.id] }, {include_blank: true}, class: "form-select" %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                      <%= f.submit %>
-                      <%= link_to "cancel", :back, class: "btn-primary", class:"rightButton" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
+<h1>Add New Deal </h1>
+<%= form_with model: @deal, local: true do |f| %>
+  <div class="row">
+    <div class="form-group col-6">
+      <%= f.label :deal_name %>
+      <%= f.text_field :deal_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-6">
+      <%= f.label :deal_price %>
+      <%= f.text_field :deal_price, class: "form-control" %>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <%= f.label :deal_description %>
+      <%= f.text_field :deal_description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.fields_for :menu_items do |m| %>
+      <div class="form-group">
+        <%= m.label :menu %>
+        <%= m.select :menu_id, current_employee.restaurant.menus.to_a.map { |t| ["#{t.menu_name}", t.id] }, {include_blank: true}, class: "form-select" %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <%= f.submit %>
+    <%= link_to "cancel", :back, class: "btn-primary", class:"rightButton" %>
   </div>
 <% end %>
