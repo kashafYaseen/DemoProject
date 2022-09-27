@@ -5,7 +5,7 @@
       <%= render 'employee/sidenav' %>
       <div id="layoutSidenav_content">
         <main>
-          <%= render 'employee/card'%>
+          <%= render 'employee/card' %>
           <div class="container-fluid px-4">
             <div class="container-fluid px-4">
               <h1 class="mt-4">Menu Food Items</h1>
@@ -43,16 +43,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <% @menu.menu_items.each do |menu_items| %>
-                        <% if menu_items.MenuItemable_type == "GroupItem" %>
-                          <% menu_items.MenuItemable.food_items.each do |d| %>
-                            <tr>
-                              <td class="counterCell"></td>
-                              <td><%= d.item_name %></td>
-                              <td><%= d.item_price %></td>
-                              <td><%= menu_items.MenuItemable.groupItem_name %></td>
-                              <td><%= button_to "Remove", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
-                            </tr>
+                      <% @menus.each do |menu| %>
+                        <% menu.menu_items.each do |menu_items| %>
+                          <% if menu_items.MenuItemable_type == "GroupItem" %>
+                            <% menu_items.MenuItemable.food_items.each do |d| %>
+                              <tr>
+                                <td class="counterCell"></td>
+                                <td><%= d.item_name %></td>
+                                <td><%= d.item_price %></td>
+                                <td><%= menu_items.MenuItemable.groupItem_name %></td>
+                                <td><%= button_to "Remove", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                              </tr>
+                            <% end %>
                           <% end %>
                         <% end %>
                       <% end %>

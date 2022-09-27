@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   def list
-    @payment = Payment.all
-    @q = @payment.ransack(params[:q])
-    @pagy, @payment = pagy(@q.result(distinct: true), items: params[:per_page])
+    @payments = Payment.all
+    @q = @payments.ransack(params[:q])
+    @pagy, @payments = pagy(@q.result(distinct: true), items: params[:per_page])
   end
 end

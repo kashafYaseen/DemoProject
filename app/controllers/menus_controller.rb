@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   def index
     @rest = current_employee.restaurant
     @q = @rest.menus.ransack(params[:q])
-    @pagy, @menu = pagy(@q.result(distinct: true), items: params[:per_page])
+    @pagy, @menus = pagy(@q.result(distinct: true), items: params[:per_page])
   end
   def list
     # @menu = Menu.all
@@ -40,12 +40,14 @@ class MenusController < ApplicationController
   def delete
   end
 
-  def menuDeal
-    @menu = Menu.find(params[:menu_id])
+  def menu_deal
+    @q = Menu.ransack(params[:q])
+    @pagy, @menus = pagy(@q.result(distinct: true), items: params[:per_page])
   end
 
-  def menuItem
-    @menu = Menu.find(params[:menu_id])
+  def menu_item
+    @q = Menu.ransack(params[:q])
+    @pagy, @menus = pagy(@q.result(distinct: true), items: params[:per_page])
   end
 
   private

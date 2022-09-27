@@ -2,7 +2,7 @@ class DiscountsController < ApplicationController
   def index
     @rest = current_employee.restaurant
     @q = @rest.discounts.ransack(params[:q])
-    @pagy, @disc = pagy(@q.result(distinct: true), items: params[:per_page])
+    @pagy, @discs = pagy(@q.result(distinct: true), items: params[:per_page])
   end
 
   def new

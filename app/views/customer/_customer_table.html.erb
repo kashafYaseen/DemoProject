@@ -17,6 +17,7 @@
             <%= select_tag "per_page", options_for_select([5,10,20,50], :selected=>params[:per_page]),  { onchange: "this.form.submit();"} %>
           <% end %>
         </div>
+
         <div class="col-6">
           <%= render 'search_form' %>
         </div>
@@ -34,13 +35,13 @@
         </thead>
 
         <tbody>
-          <% @order.select(:customer_id).distinct.each do |order| %>
+          <% @orders.select(:customer_id).distinct.each do |order| %>
             <tr>
               <td class="counterCell"></td>
-              <td><%= order.customer.first_name %> <%= order.customer.last_name%></td>
-              <td><%= order.customer.email %></td>
-              <td><%= order.customer.contact %></td>
-              <td><%= order.customer.address %></td>
+              <td><%= order.name %></td>
+              <td><%= order.email %></td>
+              <td><%= order.contact %></td>
+              <td><%= order.address %></td>
               <td><%= button_to "Update", :method => :update %></td>
               <td><%= button_to "Delete", :method => :delete %></td>
             </tr>

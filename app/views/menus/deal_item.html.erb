@@ -5,7 +5,7 @@
       <%= render 'employee/sidenav' %>
       <div id="layoutSidenav_content">
         <main>
-          <%= render 'employee/card'%>
+          <%= render 'employee/card' %>
           <div class="container-fluid px-4">
             <div class="container-fluid px-4">
               <h1 class="mt-4">Restaurant Deals</h1>
@@ -41,7 +41,7 @@
                     </thead>
 
                     <tbody>
-                      <% @menu.menu_items.each do |menu_items| %>
+                      <% @menus.menu_items.each do |menu_items| %>
                         <% if menu_items.MenuItemable_type == "Deal" %>
                           <tr>
                             <td class="counterCell"></td>

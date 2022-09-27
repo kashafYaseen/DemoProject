@@ -32,7 +32,7 @@
         </thead>
 
         <tbody>
-          <% @menu.each do |menu| %>
+          <% @menus.each do |menu| %>
             <% menu.menu_items.each do |menu_items| %>
               <% if menu_items.MenuItemable_type == "GroupItem" %>
                 <% menu_items.MenuItemable.food_items.each do |food_items| %>

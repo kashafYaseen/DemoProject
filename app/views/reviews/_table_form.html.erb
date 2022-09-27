@@ -1,4 +1,4 @@
-<% @review.each do |review| %>
+<% @reviews.each do |review| %>
   <% current_employee.restaurant.orders.each do |d| %>
     <% if review.id == d.review_id %>
       <tr>

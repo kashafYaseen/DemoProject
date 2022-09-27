@@ -19,12 +19,11 @@ class Order < ApplicationRecord
   validates :review_id, uniqueness: true
   has_many :order_items, :dependent => :destroy
 
-  def customer_name
-    "#{customer.first_name} #{customer.last_name}"
-  end
+  delegate :first_name, :last_name, :address, :email, :contact, to: :customer
 
-  def customer_address
-    customer.address
+
+  def name
+    "#{first_name} #{last_name}"
   end
 
   def order_payment

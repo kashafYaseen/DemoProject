@@ -5,7 +5,7 @@
       <%= render 'employee/sidenav' %>
       <div id="layoutSidenav_content">
         <main>
-          <%= render 'employee/card'%>
+          <%= render 'employee/card' %>
           <div class="container-fluid px-4">
             <div class="container-fluid px-4">
               <h1 class="mt-4">Restaurant Deals</h1>
@@ -43,31 +43,33 @@
                     </thead>
 
                     <tbody>
-                      <% @menu.menu_items.each do |menu_items| %>
-                        <% if menu_items.MenuItemable_type == "Deal" %>
-                          <tr>
-                            <td class="counterCell"></td>
-                            <td><%= menu_items.MenuItemable.deal_name %></td>
-                            <td><%= menu_items.MenuItemable.deal_description %></td>
-                            <td><%= menu_items.MenuItemable.deal_price %></td>
-                            <td>
-                              <% menu_items.MenuItemable.deal_items.each do |d| %>
-                                <% if d.DealItemable_type == "GroupItem" %>
-                                  <%= d.DealItemable.groupItem_name %>,
+                      <% @menus.each do |menu| %>
+                        <% menu.menu_items.each do |menu_item| %>
+                          <% if menu_item.MenuItemable_type == "Deal" %>
+                            <tr>
+                              <td class="counterCell"></td>
+                              <td><%= menu_item.MenuItemable.deal_name %></td>
+                              <td><%= menu_item.MenuItemable.deal_description %></td>
+                              <td><%= menu_item.MenuItemable.deal_price %></td>
+                              <td>
+                                <% menu_item.MenuItemable.deal_items.each do |d| %>
+                                  <% if d.DealItemable_type == "GroupItem" %>
+                                    <%= d.DealItemable.groupItem_name %>,
+                                  <% end %>
                                 <% end %>
-                              <% end %>
-                            </td>
+                              </td>
 
-                            <td>
-                              <% menu_items.MenuItemable.deal_items.each do |d| %>
-                                <% if d.DealItemable_type == "FoodItem" %>
-                                  <%= d.DealItemable.item_name %>,
+                              <td>
+                                <% menu_item.MenuItemable.deal_items.each do |d| %>
+                                  <% if d.DealItemable_type == "FoodItem" %>
+                                    <%= d.DealItemable.item_name %>,
+                                  <% end %>
                                 <% end %>
-                              <% end %>
-                            </td>
+                              </td>
 
-                            <td><%= button_to "Remove", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
-                          </tr>
+                              <td><%= button_to "Remove", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                            </tr>
+                          <% end %>
                         <% end %>
                       <% end %>
                     </tbody>
