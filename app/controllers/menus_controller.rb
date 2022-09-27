@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
   def index
     @rest = current_employee.restaurant
-    @menu = @rest.menus
+    @q = @rest.menus.ransack(params[:q])
+    @pagy, @menu = pagy(@q.result(distinct: true), items: params[:per_page])
   end
   def list
     # @menu = Menu.all
@@ -54,5 +55,9 @@ class MenusController < ApplicationController
 
     def menu_params
       params.require(:menu).permit(:menu_name, menu_timings_attributes: [:start_time, :_destroy])
+    end
+
+    def page_params
+      params.permit(:per_page)
     end
 end

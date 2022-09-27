@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   def list
     @rest = current_employee.restaurant
-    @order = @rest.orders
+    @q = @rest.orders.ransack(params[:q])
+    @pagy, @order = pagy(@q.result(distinct: true), items: params[:per_page])
   end
 
   def show

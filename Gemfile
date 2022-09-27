@@ -34,6 +34,9 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 
+gem 'pagy'
+gem 'ransack'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -1,0 +1,13 @@
+<% @review.each do |review| %>
+  <% current_employee.restaurant.orders.each do |d| %>
+    <% if review.id == d.review_id %>
+      <tr>
+        <td class="counterCell"></td>
+        <td><%= d.customer_name %></td>
+        <td><%= d.order_descr %></td>
+        <td><%= review.rating_desc%></td>
+        <td><%= review.remarks%></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

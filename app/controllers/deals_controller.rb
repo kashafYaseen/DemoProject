@@ -1,7 +1,8 @@
 class DealsController < ApplicationController
   def index
     @rest = current_employee.restaurant
-    @menu = @rest.menus
+    @q = @rest.menus.ransack(params[:q])
+    @pagy, @menu = pagy(@q.result(distinct: true), items: params[:per_page])
   end
 
   def new

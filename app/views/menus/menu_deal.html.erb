@@ -20,14 +20,25 @@
                 </div>
 
                 <div class="card-body">
-                  <table id="datatablesSimple">
+                  <div class="row">
+                    <div class="col-6">
+                      <%= form_with url: "/menus", method: :get do |form| %>
+                        entries per page
+                        <%= select_tag "per_page", options_for_select([5,10,20,50], :selected=>params[:per_page]),  { onchange: "this.form.submit();"} %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <br/>
+                  <table class="table table-bordered">
                     <thead>
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Deal Items</th>
+                        <th>Deal Group Item</th>
+                        <th>Deal Food Item</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
 
@@ -41,20 +52,32 @@
                             <td><%= menu_items.MenuItemable.deal_price %></td>
                             <td>
                               <% menu_items.MenuItemable.deal_items.each do |d| %>
-                                <%= d.DealItemable %>,
+                                <% if d.DealItemable_type == "GroupItem" %>
+                                  <%= d.DealItemable.groupItem_name %>,
+                                <% end %>
                               <% end %>
                             </td>
 
-                            <td><%= button_to "Update", :method => :update %></td>
-                            <td><%= button_to "Delete", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                            <td>
+                              <% menu_items.MenuItemable.deal_items.each do |d| %>
+                                <% if d.DealItemable_type == "FoodItem" %>
+                                  <%= d.DealItemable.item_name %>,
+                                <% end %>
+                              <% end %>
+                            </td>
+
+                            <td><%= button_to "Remove", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
                           </tr>
                         <% end %>
                       <% end %>
                     </tbody>
                   </table>
+
+                  <%= pagy_bootstrap_nav(@pagy).html_safe %>
                 </div>
 
               </div>
+
             </div>
           </div>
         </main>

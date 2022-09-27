@@ -11,7 +11,16 @@
     </div>
 
     <div class="card-body">
-      <table id="datatablesSimple">
+      <div class="row">
+        <div class="col-6">
+          <%= form_with url: "/deals", method: :get do |form| %>
+            entries per page
+            <%= select_tag "per_page", options_for_select([5,10,20,50], :selected=>params[:per_page]),  { onchange: "this.form.submit();"} %>
+          <% end %>
+        </div>
+      </div>
+      <br/>
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>ID</th>
@@ -38,6 +47,8 @@
           <% end %>
         </tbody>
       </table>
+
+      <%= pagy_bootstrap_nav(@pagy).html_safe %>
     </div>
   </div>
 

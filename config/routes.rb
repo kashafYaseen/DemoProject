@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get 'menus/new'
   get 'menus/edit'
   get 'menus/index'
-  get 'menus/menuDeal'
-  get 'menus/menuItem'
+  get 'menus/menu_deal'
+  get 'menus/menu_item'
   resources :food_items, only: [:index, :new, :create, :edit, :update, :destroy]
   get 'food_items/index'
   get 'food_items/new'
@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'deals/index'
   get 'deals/new'
   get 'deals/edit'
+  resources :reviews, only: [:index]
+  get 'reviews/index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -30,13 +30,9 @@
 
       <%= link_to "Your button","#", id: "formButton" %>
       <div id="myForm">
-        <%= render 'addGroup', f: f %>
+        <%= render 'add_group', f: f %>
       </div>
 
-      <div class="dis-none deal form-group">
-        <%= f.label :menu_name %>
-        <%= f.text_field :menu_name, class: "form-control" %>
-      </div>
     <% end %>
   </div>
   <br>
