@@ -10,7 +10,13 @@ class MenuTiming < ApplicationRecord
   }
   belongs_to :menu
 
+  delegate :restaurant, to: :menu
+
   def name
     "#{start_time} to #{end_time}"
+  end
+
+  def rest_name
+    restaurant.name
   end
 end

@@ -1,0 +1,26 @@
+<% @vouchers.each do |voucher| %>
+  <% current_employee.restaurant.discounts.each do |d| %>
+    <% if d.id == voucher.discount_id %>
+      <tr>
+        <td class="counterCell"></td>
+        <td><%= voucher.promo_code %></td>
+        <td><%= voucher.status %></td>
+        <td>
+          <% voucher.voucher_timelines.each do |vt| %>
+            <%= vt.start_time %>,
+          <% end %>
+        </td>
+
+        <td>
+          <% voucher.voucher_timelines.each do |vt| %>
+            <%= vt.end_time %>,
+          <% end %>
+        </td>
+
+        <td><%= voucher.disc_percent%>%</td>
+        <td><%= voucher.disc_type%></td>
+        <td><%= button_to "Update", edit_voucher_path(voucher), :method => :get %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

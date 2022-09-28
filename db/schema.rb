@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_01_121412) do
+ActiveRecord::Schema.define(version: 2022_09_02_113442) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -138,10 +138,12 @@ ActiveRecord::Schema.define(version: 2022_09_01_121412) do
   create_table "food_items", force: :cascade do |t|
     t.string "item_name"
     t.integer "item_price"
-    t.integer "discount_id"
+    t.integer "discount_id", null: false
+    t.integer "group_item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["discount_id"], name: "index_food_items_on_discount_id"
+    t.index ["group_item_id"], name: "index_food_items_on_group_item_id"
   end
 
   create_table "group_items", force: :cascade do |t|
@@ -307,7 +309,6 @@ ActiveRecord::Schema.define(version: 2022_09_01_121412) do
   create_table "voucher_timelines", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer "status", default: 0
     t.integer "voucher_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -329,6 +330,7 @@ ActiveRecord::Schema.define(version: 2022_09_01_121412) do
   add_foreign_key "food_item_options", "food_items"
   add_foreign_key "food_item_options", "optional_items"
   add_foreign_key "food_items", "discounts"
+  add_foreign_key "food_items", "group_items"
   add_foreign_key "menu_item_addons", "add_ons"
   add_foreign_key "menu_item_addons", "menu_items"
   add_foreign_key "menu_items", "menus"

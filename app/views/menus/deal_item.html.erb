@@ -1,0 +1,75 @@
+<% if current_employee%>
+  <%= render 'employee/navigation' %>
+  <div class="sb-nav-fixed">
+    <div id="layoutSidenav">
+      <%= render 'employee/sidenav' %>
+      <div id="layoutSidenav_content">
+        <main>
+          <%= render 'employee/card' %>
+          <div class="container-fluid px-4">
+            <div class="container-fluid px-4">
+              <h1 class="mt-4">Restaurant Deals</h1>
+              <div class="card mb-4">
+              </div>
+
+              <div class="card mb-4">
+                <div class="card-header">
+                  <i class="fas fa-table me-1"></i>
+                  Deals
+                  <%= button_to "Add New Deal", deals_new_path, :method => :get, class:"rightButton" %>
+                </div>
+
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <%= form_with url: "/menus", method: :get do |form| %>
+                        entries per page
+                        <%= select_tag "per_page", options_for_select([5,10,20,50], :selected=>params[:per_page]),  { onchange: "this.form.submit();"} %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <br/>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Deal Items</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% @menus.menu_items.each do |menu_items| %>
+                        <% if menu_items.MenuItemable_type == "Deal" %>
+                          <tr>
+                            <td class="counterCell"></td>
+                            <td><%= menu_items.MenuItemable.deal_name %></td>
+                            <td><%= menu_items.MenuItemable.deal_description %></td>
+                            <td><%= menu_items.MenuItemable.deal_price %></td>
+                            <td>
+                              <% menu_items.MenuItemable.deal_items.each do |d| %>
+                                <%= d.DealItemable %>,
+                              <% end %>
+                            </td>
+
+                            <td><%= button_to "Update", :method => :update %></td>
+                            <td><%= button_to "Delete", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                          </tr>
+                        <% end %>
+                      <% end %>
+                    </tbody>
+                  </table>
+
+                  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,72 @@
+<div class="container-fluid px-4">
+  <h1 class="mt-4">Restaurant Menus</h1>
+  <div class="card mb-4">
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      Menus
+      <%= button_to "Add New Menu", menus_new_path, :method => :get, class:"rightButton" %>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <%= form_with url: "/menus", method: :get do |form| %>
+            entries per page
+            <%= select_tag "per_page", options_for_select([5,10,20,50], :selected=>params[:per_page]),  { onchange: "this.form.submit();"} %>
+          <% end %>
+        </div>
+        <div class="col-6">
+          <%= render 'search_form' %>
+        </div>
+      </div>
+      <br/>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th><%= sort_link @q, :menu_name, "Menu Name", class:"sort-header"%></th>
+            <th>Menu Day</th>
+            <th>Timings</th>
+            <th>Menu Category</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @menus.each do |menu| %>
+            <tr>
+              <td class="counterCell"></td>
+              <td><%= menu.menu_name%></td>
+              <td>
+                <% menu.menu_timings.each do |day|%>
+                  <%= day.week_day%>,
+                <% end %>
+              </td>
+
+              <td>
+                <% menu.menu_timings.each do |day|%>
+                  <%= day.start_time%>-<%= day.end_time%>,
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to "Food Item", menus_menu_item_path(menu_id: menu.id), :class => "nav-link"  %>
+                <%= link_to "Deal", menus_menu_deal_path(menu_id: menu.id), :class => "nav-link"  %>
+              </td>
+
+              <td><%= button_to "Update", :method => :update %></td>
+              <td><%= button_to "Delete", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= pagy_bootstrap_nav(@pagy).html_safe %>
+    </div>
+
+  </div>
+
+</div>

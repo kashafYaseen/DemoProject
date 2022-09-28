@@ -1,0 +1,3 @@
+<%= search_form_for @q, url:customer_index_url do |f| %>
+  <%= f.search_field :customer_full_name_or_customer_email_or_customer_contact_or_customer_address_cont, placeholder:"Search....", class:"rightButton"%>
+<% end %>

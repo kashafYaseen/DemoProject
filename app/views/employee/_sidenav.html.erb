@@ -1,0 +1,85 @@
+<div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+      <div class="nav">
+        <div class="sb-sidenav-menu-heading">Core</div>
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
+          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+          Dashboard
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+
+        <div class="collapse" id="collapseDashboard" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <%= link_to 'Analytics', employee_index_path, :class => "nav-link" %>
+            <%= link_to 'Ratings', reviews_index_path, :class => "nav-link" %>
+          </nav>
+        </div>
+
+        <div class="sb-sidenav-menu-heading">Interface</div>
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
+          Restaurant Menus
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+
+        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <%= link_to 'Menus', menus_index_path, :class => "nav-link" %>
+            <%= link_to 'Items', food_items_index_path, :class => "nav-link" %>
+
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+            Deals
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+
+            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+              <nav class="sb-sidenav-menu-nested nav">
+                <%= link_to 'Add New Deal', deals_new_path, :class => "nav-link" %>
+                <%= link_to 'Deal Offers', deals_index_path, :class => "nav-link" %>
+              </nav>
+            </div>
+
+            <%= link_to 'Options', menus_index_path, :class => "nav-link" %>
+            <%= link_to 'AddOns', menus_index_path, :class => "nav-link" %>
+          </nav>
+        </div>
+
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOrders" aria-expanded="false" aria-controls="collapseOrders">
+          <div class="sb-nav-link-icon"><i class="fas fa-hamburger"></i></div>
+          Orders
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="collapseOrders" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <%= link_to 'Order List', orders_list_path, :class => "nav-link" %>
+          </nav>
+        </div>
+
+
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDiscounts" aria-expanded="false" aria-controls="collapseDiscounts">
+          <div class="sb-nav-link-icon"><i class="fas fa-tag"></i></i></div>
+          Discounts
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="collapseDiscounts" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <%= link_to 'Discount',discounts_index_path, :class => "nav-link" %>
+            <%= link_to 'Vouchers', vouchers_index_path, :class => "nav-link" %>
+          </nav>
+        </div>
+
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+          <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+          Customers
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <%= link_to 'Customers', customer_index_path, :class => "nav-link" %>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

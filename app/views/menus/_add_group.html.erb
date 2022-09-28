@@ -1,0 +1,9 @@
+<% @menu.menu_items.each do |menu_item| %>
+  <% menu_item.MenuItemable %>
+  <%= f.fields_for :menu_items do |menu_item| %>
+    <div class="form-group">
+      <%= menu_item.label :disc_type %>
+      <%= menu_item.select :MenuItemable_type, options_for_select(Discount::disc_types.map{ |value, index| "#{value}" }), {include_blank: true}, class: "form-select" %>
+    </div>
+  <% end %>
+<% end %>

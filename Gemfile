@@ -36,6 +36,9 @@ gem 'pundit'
 gem 'devise_invitable', '~> 2.0.0'
 gem 'ransack'
 
+gem 'pagy'
+gem 'ransack'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

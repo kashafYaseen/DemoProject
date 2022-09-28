@@ -1,0 +1,59 @@
+<div class="container-fluid px-4">
+  <h1 class="mt-4">Food Items</h1>
+  <div class="card mb-4">
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      Food Items
+      <%= button_to "Add New Food Item", food_items_new_path, :method => :get, class:"rightButton" %>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <%= form_with url: "/food_items", method: :get do |form| %>
+            entries per page
+            <%= select_tag "per_page", options_for_select([5,10,20,50], :selected=>params[:per_page]),  { onchange: "this.form.submit();"} %>
+          <% end %>
+        </div>
+      </div>
+      <br/>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th> ID</th>
+            <th>Item Name</th>
+            <th>Item Category</th>
+            <th>Item Price</th>
+            <th>Discount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @menus.each do |menu| %>
+            <% menu.menu_items.each do |menu_items| %>
+              <% if menu_items.MenuItemable_type == "GroupItem" %>
+                <% menu_items.MenuItemable.food_items.each do |food_items| %>
+                  <tr>
+                    <td class="counterCell"></td>
+                    <td><%= food_items.item_name %></td>
+                    <td><%= food_items.group_name %></td>
+                    <td><%= food_items.item_price %></td>
+                    <td><%= food_items.food_discount %>%</td>
+                    <td><%= button_to "Update", edit_food_item_path(food_items) ,:method => :get %></td>
+                    <td><%= button_to "Delete", food_item_path(food_items), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= pagy_bootstrap_nav(@pagy).html_safe %>
+    </div>
+  </div>
+
+</div>

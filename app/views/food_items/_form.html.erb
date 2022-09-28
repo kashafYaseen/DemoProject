@@ -1,0 +1,34 @@
+<h1>Food Item </h1>
+<%= form_with model: @food_item, local: true do |f| %>
+  <div class="row">
+    <div class="form-group col-6">
+      <%= f.label :item_name %>
+      <%= f.text_field :item_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-6">
+      <%= f.label :item_price %>
+      <%= f.text_field :item_price, class: "form-control" %>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="form-group col-6">
+      <%= f.label :discount %>
+      <%= f.select :discount_id, current_employee.restaurant.discounts.to_a.map { |t| ["#{t.disc_percent}%  #{t.disc_type}", t.id] }, {include_blank: true}, class: "form-select" %>
+    </div>
+
+    <div class="form-group col-6">
+      <%= f.label :category %>
+      <%= f.select :group_item_id, GroupItem.all.to_a.map { |t| ["#{t.groupItem_name}", t.id] }, {include_blank: true}, class: "form-select" %>
+    </div>
+
+  </div>
+  <br>
+
+  <div class="form-group">
+    <%= f.submit %>
+    <%= link_to "cancel", :back, class: "btn-primary", class:"rightButton" %>
+  </div>
+<% end %>
