@@ -9,4 +9,8 @@ class MenuTiming < ApplicationRecord
     Sunday: 6
   }
   belongs_to :menu
+
+  def name
+    "#{start_time} to #{end_time}"
+  end
 end

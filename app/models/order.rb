@@ -17,4 +17,5 @@ class Order < ApplicationRecord
   belongs_to :review
   validates :review_id, uniqueness: true
   has_many :order_items, :dependent => :destroy
+
 end

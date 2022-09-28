@@ -7,4 +7,8 @@ class Review < ApplicationRecord
     Excellent: 4
   }
   has_one :order, :dependent => :destroy
+
+  def name
+    "#{rating_desc}"
+  end
 end

@@ -9,4 +9,9 @@ class RestaurantTiming < ApplicationRecord
     Sunday: 6
   }
   belongs_to :restaurant
+
+  def name
+    " #{opening_time} #{closing_time}"
+  end
+
 end

@@ -4,4 +4,10 @@ class Payment < ApplicationRecord
     Online: 1
   }
   has_one :order, :dependent => :destroy
+  has_one :payment_cutoff, :dependent => :destroy
+
+  def name
+    "#{payment_type}"
+  end
+
 end
